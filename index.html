@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Assistant</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    <div class="share-modal" id="share-modal">
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3>Share Chat</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="share-options">
+                <button class="share-option" id="copy-link">
+                    <i class="fas fa-link"></i>
+                    <span>Copy Link</span>
+                </button>
+                <button class="share-option" id="download-txt">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Download as Text</span>
+                </button>
+                <button class="share-option" id="download-pdf">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Download as PDF</span>
+                </button>
+                <button class="share-option" id="share-email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Share via Email</span>
+                </button>
+            </div>
+            <div class="share-preview" id="share-preview">
+                <!-- Preview content will be added here -->
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-toggle">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="new-chat-button">
+            <button id="new-chat">
+                <i class="fas fa-plus"></i>
+                New Chat
+            </button>
+        </div>
+        <div class="chat-history" id="chat-history">
+            <!-- Chat history items will be added here dynamically -->
+        </div>
+    </div>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>AI Assistant</h1>
+            </div>
+            <div class="header-actions">
+                <button id="share-chat" class="action-button">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <button id="delete-chat" class="action-button">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message ai-message">
+                <div class="message-content">
+                    <div class="message-text">Hello! I'm your AI assistant. How can I help you today?</div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <textarea id="user-input" placeholder="Type your message here..." rows="1"></textarea>
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
