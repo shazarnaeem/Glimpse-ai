@@ -60,15 +60,35 @@ particlesJS('particles-js', {
 const themeToggle = document.querySelector('.theme-toggle');
 const body = document.body;
 
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.classList.add(savedTheme);
+    updateThemeIcon();
+}
+
+// Theme toggle click handler
 themeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', newTheme);
-    
-    // Update theme icon
-    const icon = themeToggle.querySelector('i');
-    icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    body.classList.toggle('dark-mode');
+    const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+    localStorage.setItem('theme', currentTheme);
+    updateThemeIcon();
 });
+
+// Update theme icon based on current theme
+function updateThemeIcon() {
+    const icon = themeToggle.querySelector('i');
+    if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+// Initialize theme icon
+updateThemeIcon();
 
 // Chat history management
 let chatHistory = [];
