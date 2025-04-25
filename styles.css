@@ -1,8 +1,17 @@
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2980b9;
-    --gradient-start: #3498db;
-    --gradient-end: #2980b9;
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #2d2d2d;
+    --accent-color: #4a90e2;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #404040;
+    --hover-color: #3a3a3a;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --primary-color: #123456;
+    --secondary-color: #0a1f2e;
+    --gradient-start: #123456;
+    --gradient-end: #0a1f2e;
     --background-color: #f9f9f9;
     --text-color: #2d3436;
     --message-bg: #ffffff;
@@ -15,10 +24,10 @@
 }
 
 [data-theme="dark"] {
-    --primary-color: #3498db;
-    --secondary-color: #2980b9;
-    --gradient-start: #3498db;
-    --gradient-end: #2980b9;
+    --primary-color: #123456;
+    --secondary-color: #0a1f2e;
+    --gradient-start: #123456;
+    --gradient-end: #0a1f2e;
     --background-color: #1a1a1a;
     --text-color: #ffffff;
     --message-bg: #2d2d2d;
@@ -35,8 +44,11 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
     min-height: 100vh;
     display: flex;
     justify-content: center;
