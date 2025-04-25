@@ -1,4 +1,4 @@
-# AI Chat Assistant
+# Glimpse AI
 
 A modern, interactive AI chat assistant web application with a beautiful user interface and real-time chat capabilities.
 

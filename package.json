@@ -1,7 +1,7 @@
 {
-  "name": "ai-chat-assistant",
+  "name": "glimpse-ai",
   "version": "1.0.0",
-  "description": "AI Chat Assistant with Claude API integration",
+  "description": "Glimpse AI - A modern AI chat assistant with real-time capabilities",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
