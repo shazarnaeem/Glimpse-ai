@@ -4,11 +4,17 @@
   "description": "Glimpse AI - A modern AI chat assistant with real-time capabilities",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'No build step required'",
+    "dev": "netlify dev"
   },
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
   }
 }
