@@ -129,7 +129,7 @@ function createNewChat() {
     saveChatHistory();
     updateChatHistoryUI();
     clearChatMessages();
-    // Add welcome message for new chats
+    // Add welcome message only for new chats
     addMessage("Hello! I'm your AI assistant. How can I help you today?", false);
 }
 
@@ -202,7 +202,7 @@ function loadChat(chatId) {
         currentChatId = chatId;
         clearChatMessages();
         chat.messages.forEach(msg => {
-            addMessage(msg.text, msg.isUser);
+            addMessage(msg.text, msg.isUser, false);
         });
         updateChatHistoryUI();
     }
@@ -227,9 +227,18 @@ marked.setOptions({
 });
 
 // Add message with markdown support
-function addMessage(text, isUser = false) {
+function addMessage(text, isUser = false, showWelcome = true) {
     const chat = chatHistory.find(c => c.id === currentChatId);
     if (chat) {
+        // Only add welcome message if showWelcome is true and it's a new chat
+        if (!isUser && showWelcome && chat.messages.length === 0) {
+            chat.messages.push({
+                text: "Hello! I'm your AI assistant. How can I help you today?",
+                isUser: false,
+                timestamp: new Date()
+            });
+        }
+        
         chat.messages.push({
             text,
             isUser,
@@ -644,4 +653,26 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeChat();
     initializeShareFunctionality();
     // ... other initializations ...
-}); 
+});
+
+// Delete specific chat
+function deleteChat(chatId) {
+    if (confirm('Are you sure you want to delete this chat?')) {
+        const index = chatHistory.findIndex(chat => chat.id === chatId);
+        if (index !== -1) {
+            chatHistory.splice(index, 1);
+            saveChatHistory();
+            
+            if (chatHistory.length > 0) {
+                if (currentChatId === chatId) {
+                    currentChatId = chatHistory[0].id;
+                    loadChat(currentChatId);
+                }
+            } else {
+                createNewChat();
+            }
+            
+            updateChatHistoryUI();
+        }
+    }
+} 
